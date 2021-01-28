@@ -95,7 +95,7 @@ defmodule TicTac.Game do
   end
 
   defp check_line(%Game{} = game, direction) do
-    get_line(game.board, direction, game.move)
+    get_line(game.board.squares, direction, game.move)
     |> Enum.all?(fn square -> square.val == game.current_player end)
   end
 
