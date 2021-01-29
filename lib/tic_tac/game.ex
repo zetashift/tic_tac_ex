@@ -49,16 +49,16 @@ defmodule TicTac.Game do
     end
   end
 
-  def update_square(%Game{board: b, current_player: player, move: move} = game) do
+  defp update_square(%Game{board: b, current_player: player, move: move} = game) do
     new_squares = Square.update_at(b.squares, move, player)
     %Game{game | board: %Board{b | squares: new_squares}}
   end
 
-  def other_player(:x), do: :o
-  def other_player(:o), do: :x
-  def other_player(_), do: :error
+  defp other_player(:x), do: :o
+  defp other_player(:o), do: :x
+  defp other_player(_), do: :error
 
-  def main_loop(%Game{} = game) do
+  defp main_loop(%Game{} = game) do
     # Remember |> pipe passes the result into the next function as the first argument!
     game
     |> get_move()
